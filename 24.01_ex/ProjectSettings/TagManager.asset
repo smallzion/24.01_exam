@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Map
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -11,10 +13,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Map
+  - Player
+  - Enemy
+  - EmunPlayer
   - 
   - 
   - 
@@ -38,9 +40,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: UI
     uniqueID: 2390152355
     locked: 0
@@ -55,4 +54,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 281147827
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
