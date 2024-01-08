@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,11 +15,28 @@ public class PlayerMovement : MonoBehaviour
     private bool isJump = true;
     Rigidbody2D rigid;
     Animator anim;
-    public float playerHp = 10;
+    public int playerHp = 10;
     public string failScene;
     public string successScene;
     SpriteRenderer spriteRenderer;
     public float coolDown = 1;
+
+
+    int HP
+    {
+        get => playerHp;
+        set
+        {
+            if (playerHp != value)
+            {
+                playerHp = value;  // 최대 점수 99999
+            }
+            else if(playerHp <= 0) 
+            {
+                playerHp = 0;
+            }
+        }
+    }
     private void Awake()
     {
         inputActions = new PlayerController();
@@ -130,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
             count++;
         }
 
-        playerHp -= 1.0f;
+        playerHp -= 1;
         Debug.Log("현재 남은체력: " + playerHp);
         if (playerHp <= 0.0f)
         {
@@ -149,6 +167,9 @@ public class PlayerMovement : MonoBehaviour
         SceneManager.LoadScene(failScene);
         Destroy(gameObject);
     }
-
+    public int GetHp()
+    {
+        return HP;
+    }
 }
 
