@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Map
   - Enemy
+  - Fisnih
+  - Trap
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -17,8 +20,8 @@ TagManager:
   - Player
   - Enemy
   - EmunPlayer
-  - 
-  - 
+  - Trap
+  - Coin
   - 
   - 
   - 
