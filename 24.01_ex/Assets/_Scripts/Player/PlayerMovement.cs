@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (playerHp != value)
             {
-                playerHp = value;  // ÃÖ´ë Á¡¼ö 99999
+                playerHp = value;  // ìµœëŒ€ ì ìˆ˜ 99999
             }
             else if(playerHp <= 0) 
             {
@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnMove(InputAction.CallbackContext context)
     {
         inputDir = context.ReadValue<Vector2>();
-        Debug.Log("ÁÂÇ¥°ª: " + inputDir);
+        Debug.Log("ì¢Œí‘œê°’: " + inputDir);
         if(context.ReadValue<Vector2>().x == 1) 
         {
             transform.localScale = new Vector3(1, 1, 1);
@@ -118,15 +118,29 @@ public class PlayerMovement : MonoBehaviour
             isJump = true;
             anim.SetBool("isJump", false);
         }
-        if(collision.gameObject.CompareTag("Finish"))
-        {
-            SceneManager.LoadScene(successScene);
-            Debug.Log("µµÂø");
-        }
         if(collision.gameObject.CompareTag("Enemy"))
         {
             OnDamage();
             Invoke(nameof(OffDamage), coolDown);
+        }
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            GameManager.instance.coin++;
+            GameManager.instance.textCoin.text = "Coin: " + GameManager.instance.coin;
+            Destroy(collision.gameObject);
+        }
+        if(collision.gameObject.CompareTag("Finish"))
+        {
+            Debug.Log("ë„ì°©");
+        }
+        if (collision.gameObject.CompareTag("Finish") && GameObject.FindGameObjectWithTag("Coin") == null)
+        {
+            SceneManager.LoadScene(successScene);
+            Debug.Log("ë„ì°©");
         }
     }
 
@@ -149,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         playerHp -= 1;
-        Debug.Log("ÇöÀç ³²ÀºÃ¼·Â: " + playerHp);
+        Debug.Log("í˜„ì¬ ë‚¨ì€ì²´ë ¥: " + playerHp);
         if (playerHp <= 0.0f)
         {
             Dead();
@@ -157,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void OffDamage()
     {
-        Debug.Log("offµ¥¹ÌÁö È£Ãâ");
+        Debug.Log("offë°ë¯¸ì§€ í˜¸ì¶œ");
         gameObject.layer = 7;
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }

@@ -6,9 +6,9 @@ TagManager:
   tags:
   - Map
   - Enemy
-  - Fisnih
   - Trap
   - Coin
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -22,8 +22,8 @@ TagManager:
   - EmunPlayer
   - Trap
   - Coin
-  - 
-  - 
+  - Camera
+  - Wall
   - 
   - 
   - 

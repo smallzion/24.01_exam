@@ -5,15 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int coin;
-    public int life;
-    public float gameTime;
+    public int coin = 0;
+    public int life = 3;
+    public float gameTime = 60.0f;
     public TextMeshProUGUI textTime;
     public TextMeshProUGUI textCoin;
     public TextMeshProUGUI textLife;
     public static GameManager instance;
     GameObject playerObject;
     PlayerMovement player;
+
+    public int Coin
+    {
+        get { return coin; }
+        set
+        {
+            if (value != coin)
+            {
+                coin = value;
+            }
+        }
+    }
     private void Awake()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -48,5 +60,6 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Fail");
         }
         textTime.text = "Time: " + (int)gameTime;
+        textCoin.text = "Coin: " + coin;
     }
 }
