@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textCoin;
     public TextMeshProUGUI textLife;
     public static GameManager instance;
+    public int maxCoin = 0;
     GameObject playerObject;
     PlayerMovement player;
 
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour
         playerObject = GameObject.FindGameObjectWithTag("Player");
         player = playerObject.GetComponent<PlayerMovement>();
         life = player.GetHp();
-
+        GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
+        maxCoin = coins.Length;
     }
     void Start()
     {
@@ -60,6 +62,6 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Fail");
         }
         textTime.text = "Time: " + (int)gameTime;
-        textCoin.text = "Coin: " + coin;
+        textCoin.text = "Coin: " + coin + " / " + maxCoin;
     }
 }

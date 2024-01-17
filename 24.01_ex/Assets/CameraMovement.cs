@@ -40,37 +40,13 @@ public class CameraFollow : MonoBehaviour
 
     void ClampCameraPosition()
     {
-        float clampedX = Mathf.Clamp(transform.position.x, 0, 80);
+        float minX = 0.0f;
+        float maxX = 35.5f;
+
+        float clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
 
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Wall"))
-        {
-            // 충돌한 오브젝트가 Wall 태그를 가진 경우
-            Vector3 wallDirection = (other.transform.position - transform.position).normalized;
-
-            // 벽과의 상대 위치를 계산
-            float relativePosition = Vector3.Dot(wallDirection, Vector3.right);
-
-            // 충돌 방향이 오른쪽이면 카메라를 왼쪽으로 이동 방지
-            if (relativePosition < 0)
-            {
-                moveSpeed = 0.0f;
-                Debug.Log("Cannot move to the right");
-            }
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Wall"))
-        {
-            // 충돌이 끝난 경우, 이동 속도를 복원
-            moveSpeed = originalMoveSpeed;
-            Debug.Log("Wall exited");
-        }
-    }
 }
+//0 부터 35.5까지
