@@ -328,11 +328,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6708443746059752960, guid: 7540d92d87fb5ed4e8c3477b9f00c3e9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.08
+      value: -17.09
       objectReference: {fileID: 0}
     - target: {fileID: 6708443746059752960, guid: 7540d92d87fb5ed4e8c3477b9f00c3e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16
+      value: -5.37
       objectReference: {fileID: 0}
     - target: {fileID: 6708443746059752960, guid: 7540d92d87fb5ed4e8c3477b9f00c3e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -723,10 +723,6 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2392548016460087160, guid: f416f70763a0bd447be8b285174dc423, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2392548016460087160, guid: f416f70763a0bd447be8b285174dc423, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.356414
       objectReference: {fileID: 0}
@@ -766,9 +762,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2611621302319286026, guid: f416f70763a0bd447be8b285174dc423, type: 3}
-      propertyPath: m_FlipX
-      value: 1
+    - target: {fileID: 5579149459482294517, guid: f416f70763a0bd447be8b285174dc423, type: 3}
+      propertyPath: detectionRange
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8313,9 +8309,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792552110}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0

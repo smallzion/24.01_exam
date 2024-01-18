@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(moveSpeed * Time.fixedDeltaTime * inputDir);
+        transform.Translate(moveSpeed * Time.deltaTime * inputDir);
     }
 
     private void OnMove(InputAction.CallbackContext context)

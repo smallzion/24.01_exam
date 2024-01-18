@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private int nextMove;
     public float raycastDistance = 1f;
     public LayerMask groundLayer;
-
+    Vector2 direction = Vector2.zero;
     private int moveDirection = 1; // 1이면 오른쪽, -1이면 왼쪽
 
     public float detectionRange = 5f;
@@ -57,7 +57,10 @@ public class Enemy : MonoBehaviour
 
     bool DetectPlayer()
     {
-        Vector2 direction = player.position - transform.position;
+        if(player != null)
+        {
+            direction = player.position - transform.position;
+        }
         int layerMask = 1 << LayerMask.NameToLayer("Player");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, detectionRange, layerMask);
         Debug.DrawRay(transform.position, direction.normalized * detectionRange, Color.green);
