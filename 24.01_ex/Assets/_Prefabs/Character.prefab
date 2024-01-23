@@ -183,9 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17cf1e12ba218e14da2226599dbd4149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 5
   jump: 7
   playerHp: 10
   failScene: Fail
-  successScene: Stage2
+  successScene: Success
   coolDown: 1

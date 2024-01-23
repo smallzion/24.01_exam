@@ -22,16 +22,16 @@ public class PlayerMovement : MonoBehaviour
     public float coolDown = 1;
 
 
-    int HP
+    int Hp
     {
         get => playerHp;
         set
         {
             if (playerHp != value)
             {
-                playerHp = value;  // 최대 점수 99999
+                playerHp = value;
             }
-            else if(playerHp <= 0) 
+            else if (playerHp <= 0)
             {
                 playerHp = 0;
             }
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Move();
-        if(playerHp <= 0)
+        if (Hp <= 0)
         {
             Dead();
         }
@@ -79,51 +79,51 @@ public class PlayerMovement : MonoBehaviour
     {
         inputDir = context.ReadValue<Vector2>();
         Debug.Log("좌표값: " + inputDir);
-        if(context.ReadValue<Vector2>().x == 1) 
+        if (context.ReadValue<Vector2>().x == 1)
         {
             transform.localScale = new Vector3(1, 1, 1);
             if (!anim.GetBool("isJump"))
                 anim.SetBool("isMove", true);
         }
-        else if(context.ReadValue<Vector2>().x == -1)
+        else if (context.ReadValue<Vector2>().x == -1)
         {
             transform.localScale = new Vector3(-1, 1, 1);
             if (!anim.GetBool("isJump"))
                 anim.SetBool("isMove", true);
         }
-        else if(context.canceled)
+        else if (context.canceled)
         {
             anim.SetBool("isMove", false);
         }
     }
     private void OnJump(InputAction.CallbackContext context)
     {
-        if(!anim.GetBool("isJump") && isJump == true && context.performed)
+        if (!anim.GetBool("isJump") && isJump == true && context.performed)
         {
             rigid.AddForce(Vector3.up * jump, ForceMode2D.Impulse);
             isJump = false;
             anim.SetBool("isJump", true);
         }
-        else if(context.canceled)
+        else if (context.canceled)
         {
 
         }
 
-        
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Map"))
+        if (collision.gameObject.CompareTag("Map"))
         {
             isJump = true;
             anim.SetBool("isJump", false);
         }
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             OnDamage();
             Invoke(nameof(OffDamage), coolDown);
         }
-        
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
             GameManager.instance.textCoin.text = "Coin: " + GameManager.instance.coin;
             Destroy(collision.gameObject);
         }
-        if(collision.gameObject.CompareTag("Finish"))
+        if (collision.gameObject.CompareTag("Finish"))
         {
             Debug.Log("도착");
         }
@@ -162,9 +162,9 @@ public class PlayerMovement : MonoBehaviour
             count++;
         }
 
-        playerHp -= 1;
-        Debug.Log("현재 남은체력: " + playerHp);
-        if (playerHp <= 0.0f)
+        Hp -= 1;
+        Debug.Log("현재 남은체력: " + Hp);
+        if (Hp <= 0.0f)
         {
             Dead();
         }
@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public int GetHp()
     {
-        return HP;
+        return Hp;
     }
 }
 
