@@ -64,10 +64,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Move();
-        if (Hp <= 0)
-        {
-            Dead();
-        }
     }
 
     private void Move()

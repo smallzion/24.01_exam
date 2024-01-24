@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     private int moveDirection = 1; // 1이면 오른쪽, -1이면 왼쪽
 
     public float detectionRange = 5f;
+    private float defaultRange = 5f;
+    private float findRange = 10.0f;
     public float movementSpeed = 2f;
     private Transform player;
 
@@ -18,6 +20,8 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         InvokeRepeating(nameof(Flip), Random.Range(0f, 5f), Random.Range(5f, 10f));
+        defaultRange = detectionRange;
+        findRange = detectionRange * 2;
     }
 
     // Update is called once per frame
@@ -54,13 +58,13 @@ public class Enemy : MonoBehaviour
         Debug.DrawRay(transform.position, direction.normalized * detectionRange, Color.green);
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
-            detectionRange = 10.0f;
+            detectionRange = findRange;
             Debug.Log("찾음!");
             return true;
         }
 
         Debug.Log("못찾음!");
-        detectionRange = 3.0f;
+        detectionRange = defaultRange;
         return false;
     }
 
